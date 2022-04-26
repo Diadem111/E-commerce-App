@@ -1,0 +1,21 @@
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+.footer{
+ background-color: rgb(43,44,170);
+ text-align: center;   
+ padding: 10px;
+ color: white;
+ position: fixed;
+ bottom: 0;
+ left: 0;
+ right: 0; 
+}
+.content{
+    padding-top: 140px;
+    
+}

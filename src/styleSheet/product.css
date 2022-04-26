@@ -1,0 +1,28 @@
+.product-img{
+    height: 150px;
+     width: 150px;
+
+     /* justify-content: center;
+     justify-items: center;
+     margin-left: 10px; */
+}
+.product{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    width: 210px;
+    height: 260px;
+}
+.product-action{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+}
+#product p{
+    min-height: 4.5rem;
+
+}
+.product-infoImg{
+    height: 200px;
+    width: 250px;
+}

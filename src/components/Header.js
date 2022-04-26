@@ -1,17 +1,22 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React from 'react'
+ import { Link } from 'react-router-dom';
+import {FalBars} from "react"
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark, faGripHorizontal, faBars, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { useSelector,useDispatch } from 'react-redux';
+import { increment } from '../actions';
 
-
-
-
-export default function NavBar() {
-  let image = window.location.origin + "/images/logo-removebg-preview.png";
-    return (
-    <>
-  < nav class="navbar navbar-expand-sm navbar-dark " style={{backgroundColor:'rgb(43,44,170)'}}>
+export default function Header() {
+    const count = useSelector((state)=>{
+      return state.counterReducer.count
+    })
+    const dispatch = useDispatch()
+    // console.log(count)
+    let image = window.location.origin + "/images/logo-removebg-preview.png";
+  return (
+    <div className='header '>
+     < nav class="navbar navbar-expand-sm navbar-dark " style={{backgroundColor:'rgb(43,44,170)'}}>
   <div class="container-fluid text-light">
     <a class="navbar-brand" to="/">Logo</a>
     <small>Free shipping order</small>
@@ -37,11 +42,11 @@ export default function NavBar() {
       {/* dropdown start here */}
       <div className='dropdown '>
          <button type='button' className='btn btn-primary btn-outline dropdown-toggle' data-bs-toggle="dropdown">
-           Account
+           users
          </button>
          <ul className='dropdown-menu'>
-          <li><a href="#" className='dropdown-item'>Log in</a></li>
-          <li><a href="#" className='dropdown-item'>Sign un</a></li>
+          <li><a href="#" className='dropdown-item'>orders</a></li>
+          <li><a href="#" className='dropdown-item'>log out</a></li>
          </ul>
       </div>
           {/* dropdown ends here */}
@@ -49,30 +54,31 @@ export default function NavBar() {
           
           <div className='dropdown mx-2'>
          <button type='button' className='btn btn-primary btn-outline dropdown-toggle' data-bs-toggle="dropdown">
-           Help
+           logout 
          </button>
          <ul className='dropdown-menu'>
           <li><a href="#" className='dropdown-item'>Log in</a></li>
           <li><a href="#" className='dropdown-item'>Sign un</a></li>
-          
          </ul>
       </div>
       {/* help dropdown ends here */}
-      <div className='d-flex mx-4 mt-3 text-light'>
-      <Link to={'/cart'}>
-								<span>
-									<FontAwesomeIcon icon={faGripHorizontal} />
-								</span>
-								<h3>Cart</h3>
+      <div className='flex mx-4 mt-3 text-light'>
+      <Link to={'/cart'} >
+								<div>
+									<FontAwesomeIcon icon={faCartShopping} className="shop"/>
+                  <small className='cartId'>Cart </small>
+								</div>
+							
 							</Link>
       </div>
-          {/* End of cart */}
-          <FontAwesomeIcon icon={faGripHorizontal} />
-      <p>httttt</p>
+      {/* End of cart div */}
+      <div id='cartNum'>
+        <small>{count}</small>
+      </div>
        </div>
     </div>
 </nav>
- 
-    </>
+
+    </div>
   )
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import Products from './Products';
 
 export default function Home() {
     let backImage = window.location.origin + "/images/mama.png";
@@ -25,8 +26,18 @@ export default function Home() {
           <div class="card mb-5 pb-2" style={{width:'700px', 
           textAlign:'center',backgroundColor:'rgb(15,10,222)'}}>
         <img src={backImage} alt="woman"  className='card-img-top ' style={{width:'600px',backgroundColor:'rgb(15,10,222)'}}/>
-      </div>
+        </div>
   </div>
+
+   {/* second card finish here */}
+        </div>
+        {/* shopping part */}
+        <div className='container border border-2 border-success '>
+          <div className='row'>
+            <div className="col-md-8">
+              <Products/>
+            </div>
+          </div>
         </div>
     </div>
     </>
