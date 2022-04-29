@@ -11,7 +11,7 @@ export default function Home() {
 
             {/* first card start here */}
           <div>
-          <div class="card mx-5" style={{width:'400px',backgroundColor:'rgb(15,10,222)',boxShadow:"rgba(1,1,1,1,0.4)"}}>
+          <div class="card mx-5" style={{width:'300px',backgroundColor:'rgb(15,10,222)',boxShadow:"rgba(1,1,1,1,0.4)"}}>
   <div class="card-body mt-5 ">
       <small className='' style={{color:'green',fontFamily:'sans-serif',fontWeight:'bold'}}>25% OFF PROMOTIONAL SALE</small>
     <h1 class="card-title text-white" style={{fontFamily:'sans-serif',fontWeight:'bolder',fontSize:"40px"}}>All you need in the kitchen.</h1>

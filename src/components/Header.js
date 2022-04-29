@@ -9,10 +9,10 @@ import { increment } from '../actions';
 
 export default function Header() {
     const count = useSelector((state)=>{
-      return state.counterReducer.count
+      return state.counter.count
     })
     const dispatch = useDispatch()
-    // console.log(count)
+    console.log(count)
     let image = window.location.origin + "/images/logo-removebg-preview.png";
   return (
     <div className='header '>
