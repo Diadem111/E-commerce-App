@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { colRef } from '../fireConfig';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection,deleteDoc,doc} from 'firebase/firestore';
 import { getStorage, ref, uploadString, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { storage } from '../fireConfig';
 import db from '../fireConfig';
+import DeleteProduct from './DeleteProduct';
 
 export default function AdminPage() {
 	// const [users, setusers] = useState([])
@@ -19,6 +20,7 @@ export default function AdminPage() {
 	const [ description, setdescription ] = useState('');
 	const [ imageToPost, setimageToPost ] = useState('');
 	const [ allProduct, setallProduct ] = useState([]);
+	const [productId, setproductId] = useState('')
 	const filepickerRef = useRef(null);
 	const [ photo, setphoto ] = useState(null);
 	const [ imgUrl, setimgUrl ] = useState('');
@@ -76,7 +78,7 @@ export default function AdminPage() {
 			//   localStorage.allStudents = JSON.stringify(newAllStudents)
 			return newAllStudents;
 		});
-		//  console.log(allProduct);
+		console.log(allProduct);
 		//  console.log(imageToPost);
 
 		addDoc(colRef, {
@@ -86,8 +88,22 @@ export default function AdminPage() {
 			quantity: quantity,
 			description: description,
 			image: imgUrl
-		}).then(() => {});
+		}).then(() => {
+			category('')
+		});
 	};
+
+	// delete document
+	const deleteProductForm =  () =>{
+		console.log('i got here')
+        const docRef = doc(db,"products",productId)
+        deleteDoc(docRef)
+        .then(() => {
+			console.log(allProduct);
+			// deleteProductForm.reset()
+			
+		        })
+    }
 
 	// another fuct
 
@@ -135,11 +151,11 @@ export default function AdminPage() {
 								</span>
 								<h3>Add products</h3>
 							</Link>
-							<Link to={'/'} className="linkType">
+							<Link to={'/delete-product '} className="linkType">
 								<span>
 									<FontAwesomeIcon icon={faGripHorizontal} />
 								</span>
-								<h3>Customers</h3>
+								<h3>Delete Products</h3>
 							</Link>
 							<Link to={'/'} className="linkType">
 								<span>
@@ -236,6 +252,17 @@ export default function AdminPage() {
                                 
                                 {/* the percentage side */}
                                 <progress value={progress} max="100"/>
+
+								{/* delete */}
+								<div className='delete'>
+        <label for="id">Document Id</label>
+        <hr />
+        <input type="text" name="" id="" value={productId}
+									onChange={(e) => setproductId(e.target.value)}
+									required />
+                                    <hr />
+        <button className='btn btn-primary' onClick={deleteProductForm}>Delete a product</button>
+    </div>
 			
 
                                 {/* End of img */}

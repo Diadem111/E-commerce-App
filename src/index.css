@@ -312,16 +312,16 @@ left: 1rem;
 
 }
 #cartNum{
-  border: 1px solid red;
+  /* border: 1px solid blue; */
   border-radius: 15px;
   width:15px;
   height:18px;
   position: absolute;
-  right: 62px;
+  right:50px;
   text-align: center;
   top:28px;
   color: white;
-  background-color:orangered;
+  background-color:blue;
 
 }
 .shop{

@@ -70,7 +70,8 @@ export default function Homepage() {
    const filterProduct = (cat) => {
     const updatedList = productsInfo.filter((x)=>x.category === cat);
     setfilter(updatedList);
-    console.log(filter);
+    console.log(updatedList)
+    // console.log(filter);
    }
     const ShowProducts = () => {
       return(

@@ -3,16 +3,32 @@ import React from 'react'
 import {FalBars} from "react"
 import {faCartShopping} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {ShoppingCart,} from "@material-ui/icons"
 import { faXmark, faGripHorizontal, faBars, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { useSelector,useDispatch } from 'react-redux';
-import { increment } from '../actions';
+
+import { useState } from 'react';
+
 
 export default function Header() {
-    const count = useSelector((state)=>{
-      return state.counter.count
-    })
-    const dispatch = useDispatch()
-    console.log(count)
+    const [cartF, setcartF] = useState('')
+    const quantity = useSelector((state) => {
+      return state.cart.itemsQuantity;
+    });
+  
+    // const dispatch = useDispatch()
+    // console.log(count)
+
+  //   const mapStateToProps = state =>{
+  //     return{
+  //         numberCart:state._todoProduct.numberCart,
+          
+  //     }
+  //     setcartF(numberCart)
+  // }
+
+       console.log(quantity)
+
     let image = window.location.origin + "/images/logo-removebg-preview.png";
   return (
     <div className='header '>
@@ -63,17 +79,22 @@ export default function Header() {
       </div>
       {/* help dropdown ends here */}
       <div className='flex mx-4 mt-3 text-light'>
-      <Link to={'/cart'} >
-								<div>
-									<FontAwesomeIcon icon={faCartShopping} className="shop"/>
-                  <small className='cartId'>Cart </small>
-								</div>
+      <Link to='/cart'>
+								
+							<button className='btn btn-outline-dark text-white'>
+              <ShoppingCart>
+
+              </ShoppingCart>
+                  </button>
+								
 							
 							</Link>
       </div>
       {/* End of cart div */}
       <div id='cartNum'>
-        <small>{count}</small>
+      <Link to="/cart">
+        <span class="badge badge-primary" >{quantity}</span></Link>
+        {/* <small></small> */}
       </div>
        </div>
     </div>
